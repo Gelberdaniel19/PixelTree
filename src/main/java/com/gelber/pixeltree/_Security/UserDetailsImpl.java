@@ -1,7 +1,6 @@
-package com.gelber.pixeltree._Repository;
+package com.gelber.pixeltree._Security;
 
-import com.gelber.pixeltree.CreateAccount.Role;
-import com.gelber.pixeltree.CreateAccount.User;
+import com.gelber.pixeltree._Model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

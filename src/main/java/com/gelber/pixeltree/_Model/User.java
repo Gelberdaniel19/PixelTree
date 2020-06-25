@@ -1,4 +1,4 @@
-package com.gelber.pixeltree.CreateAccount;
+package com.gelber.pixeltree._Model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

@@ -2,7 +2,6 @@ body {
     background-image: url("/img/background_glacial_mountains.png");
     background-repeat: no-repeat;
     background-size: 150%;
-    image-rendering: crisp-edges;
 }
 
 .shrinker {

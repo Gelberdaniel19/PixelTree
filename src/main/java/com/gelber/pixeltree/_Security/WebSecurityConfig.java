@@ -1,6 +1,5 @@
-package com.gelber.pixeltree._Config;
+package com.gelber.pixeltree._Security;
 
-import com.gelber.pixeltree._Repository.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;

@@ -1,5 +1,7 @@
 body {
     font-family: 'Staatliches', cursive;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 
 .navbar {

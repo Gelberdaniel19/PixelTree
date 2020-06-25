@@ -1,6 +1,7 @@
-package com.gelber.pixeltree._Repository;
+package com.gelber.pixeltree._Security;
 
-import com.gelber.pixeltree.CreateAccount.User;
+import com.gelber.pixeltree._Model.User;
+import com.gelber.pixeltree._Repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,8 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("Could not find anyone with username " + username);
         } else {
-            UserDetails userDetails = new UserDetailsImpl(user);
-            return userDetails;
+            return new UserDetailsImpl(user);
         }
     }
 }

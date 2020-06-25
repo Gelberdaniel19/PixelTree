@@ -1,4 +1,4 @@
-package com.gelber.pixeltree._Config;
+package com.gelber.pixeltree._Security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;

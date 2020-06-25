@@ -1,8 +1,8 @@
 package com.gelber.pixeltree;
 
-import com.gelber.pixeltree.CreateAccount.Role;
-import com.gelber.pixeltree.CreateAccount.User;
-import com.gelber.pixeltree.CreateAccount.UserRole;
+import com.gelber.pixeltree._Model.Role;
+import com.gelber.pixeltree._Model.User;
+import com.gelber.pixeltree._Model.UserRole;
 import com.gelber.pixeltree._Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
