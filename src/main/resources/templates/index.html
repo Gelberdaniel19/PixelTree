@@ -1,15 +1,50 @@
 <!doctype html>
 
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-
     <title>Pixel Tree</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Procedurally generated pixel art objects">
     <meta name="author" content="Daniel Gelber">
+
+    <!-- Imports -->
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/core.css}"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}"/>
 </head>
 
 <body>
-    <h1>title</h1>
+
+<div class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom: 1px solid black" th:fragment="navbar">
+    <div class="shrinker d-flex mx-auto">
+        <a class="navbar-brand" href="#">Pixel Tree</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/packs/official/1">Option</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/packs/featured/1">Option</a>
+                </li>
+            </ul>
+
+            <a class="btn btn-primary" href="/create">Create Account</a>
+            <a class="btn btn-outline-secondary ml-2" href="/login">Login</a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
