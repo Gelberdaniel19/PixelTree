@@ -1,0 +1,20 @@
+body {
+    font-family: 'Staatliches', cursive;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+.form-control {
+    font-family: 'Inconsolata', monospace;
+}
+
+.navbar {
+    background-color: #ffffff30 !important;
+    backdrop-filter: blur(3px);
+}
+
+/*Shrink the navbar*/
+.shrinker {
+    max-width: 1600px;
+    min-width: 80%;
+}

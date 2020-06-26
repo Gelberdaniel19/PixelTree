@@ -1,0 +1,23 @@
+<head xmlns:th="http://www.thymeleaf.org" th:fragment="head(title, name)">
+    <title th:text="${title}" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Procedurally generated pixel art objects">
+    <meta name="author" content="Daniel Gelber">
+
+    <!-- Imports -->
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/_core.css" />
+    <link rel="stylesheet" th:href="'/css/' + ${name} + '.css'" />
+
+    <!-- JavaScript -->
+    <script th:src="'/script/' + ${name} + '.js'"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}" />
+</head>
