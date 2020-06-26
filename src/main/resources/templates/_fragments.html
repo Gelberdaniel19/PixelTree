@@ -10,6 +10,7 @@
         <!-- Imports -->
         <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/webjars/font-awesome/5.13.0/css/all.css">
         <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 
@@ -43,8 +44,19 @@
                         </li>
                     </ul>
 
-                    <a th:unless="${login}" class="btn btn-primary" href="/create">Create Account</a>
-                    <a th:unless="${login}" class="btn btn-outline-primary ml-2" href="/login">Login</a>
+                    <div th:if="${session.user == null}">
+                        <a th:unless="${login}" class="btn btn-primary" href="/create">Create Account</a>
+                        <a th:unless="${login}" class="btn btn-outline-primary ml-2" href="/login">Login</a>
+                    </div>
+                    <div th:unless="${session.user == null}">
+                        <a class="btn btn-outline-success" href="/hub">
+                            <div class="d-flex flex-row align-items-center">
+                                <i class="fas fa-user"></i>
+                                <div class="ml-3" th:text="${session.user.username}" />
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
