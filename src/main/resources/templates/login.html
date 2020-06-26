@@ -1,9 +1,12 @@
 <!doctype html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="_fragment-head.html::head('Login | Pixel Tree', 'login')">
+<head th:include="_fragments :: head('Login | Pixel Tree', 'login')">
 
 <body>
+
+<div th:include="_fragments :: navbar('true')"></div>
+
 <!-- if param.error or param.logout -->
 <div class="container-fluid">
     <div class="row no-gutter">

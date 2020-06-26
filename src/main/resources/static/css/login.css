@@ -2,9 +2,11 @@ body {
     background-image: url("/img/background_glacial_mountains.png");
     background-repeat: no-repeat;
     background-size: 150%;
+    height: 100vh;
 }
 
 #login-bg {
     background-color: #ffffff30;
     backdrop-filter: blur(3px);
+    border-left: 1px solid black;
 }

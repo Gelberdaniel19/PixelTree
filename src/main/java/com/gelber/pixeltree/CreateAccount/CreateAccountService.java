@@ -23,7 +23,7 @@ public class CreateAccountService {
         user.setEmail(email);
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
-        user.addRole(new UserRole(user, Role.TRIAL_USER));
+        user.addRole(new UserRole(user, Role.USER));
         userRepository.save(user);
     }
 }
