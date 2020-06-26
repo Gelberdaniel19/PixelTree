@@ -24,6 +24,8 @@ public class AccountSessionInterceptor implements HandlerInterceptor {
                 User user = userRepository.findByUsername(request.getUserPrincipal().getName());
                 request.getSession().setAttribute("user", user);
             }
+        } else {
+            request.getSession().removeAttribute("user");
         }
         return true;
     }
