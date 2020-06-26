@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pixel Tree</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Procedurally generated pixel art objects">
+    <meta name="author" content="Daniel Gelber">
+
+    <!-- Imports -->
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/core.css}"/>
+    <link rel="stylesheet" th:href="@{/css/create.css}"/>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}"/>
+</head>
+
+<body>
+
+Account creation
+
+<form method="post" action="/create">
+    <input name="email" type="email">
+    <input name="username" type="text">
+    <input name="password" type="password">
+    <button type="submit">submit</button>
+</form>
+
+</body>
+</html>

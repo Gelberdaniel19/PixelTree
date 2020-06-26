@@ -1,8 +1,10 @@
 package com.gelber.pixeltree._Model;
 
+import javax.management.relation.RoleList;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "user")
@@ -36,6 +38,10 @@ public class User {
 
     @Column(nullable = false)
     private boolean verified = false;
+
+    public User() {
+        this.roleList = new ArrayList<UserRole>();
+    }
 
     // Getters and setters
     public Integer getId() {
@@ -76,6 +82,10 @@ public class User {
 
     public void setRoleList(List<UserRole> permissionList) {
         this.roleList = permissionList;
+    }
+
+    public void addRole(UserRole userRole){
+        this.roleList.add(userRole);
     }
 
     public boolean isActive() {
