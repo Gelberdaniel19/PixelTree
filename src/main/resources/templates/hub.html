@@ -8,8 +8,41 @@
     <div th:include="_fragments :: sidebar"></div>
     <script> $("#linkDashboard").attr("class", "active"); </script>
 
-    <div id="content">
-        <h1>Test</h1>
+    <div id="content" class="w-75 my-5 mx-auto">
+        <h1 class="mt-5 ml-5" th:text="${session.user.getUsername()}"></h1>
+        <p class="mt-2 ml-5 mb-5" th:text="${session.user.getEmail()}"></p>
+
+        <!-- Tabs for profile sections -->
+        <ul class="nav nav-tabs mx-5">
+            <li class="nav-item mr-5">
+                <a class="nav-link active" id="credits-tab" data-toggle="tab" href="#credits" role="tab" aria-controls="credits" aria-selected="true">Credits</a>
+            </li>
+            <li class="nav-item mr-5">
+                <a class="nav-link" id="billing-tab" data-toggle="tab" href="#billing" role="tab" aria-controls="billing" aria-selected="true">Billing</a>
+            </li>
+            <li class="nav-item mr-5">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Edit Profile</a>
+            </li>
+        </ul>
+        <hr style="margin-top: -4px" />
+
+        <!-- Profile sections themselves -->
+        <div class="tab-content" id="myTabContent">
+            <!-- Credits tab -->
+            <div class="tab-pane fade show active" id="credits" role="tabpanel" aria-labelledby="credits-tab">
+                <h2>Credits</h2>
+            </div>
+
+            <!-- Billing tab -->
+            <div class="tab-pane fade" id="billing" role="tabpanel" aria-labelledby="billing-tab">
+                <h2>Billing</h2>
+            </div>
+
+            <!-- Profile tab -->
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <h2>Profile</h2>
+            </div>
+        </div>
     </div>
 
 </div>
