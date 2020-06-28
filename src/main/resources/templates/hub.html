@@ -8,44 +8,101 @@
     <div th:include="_fragments :: sidebar"></div>
     <script> $("#linkDashboard").attr("class", "active"); </script>
 
-    <div id="content" class="w-75 my-5 mx-auto">
-        <h1 class="mt-5 ml-5" th:text="${session.user.getUsername()}"></h1>
-        <p class="mt-2 ml-5 mb-5" th:text="${session.user.getEmail()}"></p>
+    <div id="content">
+        <div class="my-5 mx-auto w-75">
+            <h1 class="mt-5 ml-5" th:text="${session.user.getUsername()}"></h1>
+            <p class="mt-2 ml-5 mb-5" id="email-subtitle" th:text="${session.user.getEmail()}"></p>
 
-        <!-- Tabs for profile sections -->
-        <ul class="nav nav-tabs mx-5">
-            <li class="nav-item mr-5">
-                <a class="nav-link active" id="credits-tab" data-toggle="tab" href="#credits" role="tab" aria-controls="credits" aria-selected="true">Credits</a>
-            </li>
-            <li class="nav-item mr-5">
-                <a class="nav-link" id="billing-tab" data-toggle="tab" href="#billing" role="tab" aria-controls="billing" aria-selected="true">Billing</a>
-            </li>
-            <li class="nav-item mr-5">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Edit Profile</a>
-            </li>
-        </ul>
-        <hr style="margin-top: -4px" />
+            <!-- Tabs for profile sections -->
+            <ul class="nav nav-tabs mx-5">
+                <li class="nav-item mr-5">
+                    <a class="nav-link active" id="credits-tab" data-toggle="tab" href="#credits" role="tab" aria-controls="credits" aria-selected="true">Credits</a>
+                </li>
+                <li class="nav-item mr-5">
+                    <a class="nav-link" id="billing-tab" data-toggle="tab" href="#billing" role="tab" aria-controls="billing" aria-selected="true">Billing</a>
+                </li>
+                <li class="nav-item mr-5">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Edit Profile</a>
+                </li>
+            </ul>
+            <hr style="margin-top: -4px" />
 
-        <!-- Profile sections themselves -->
-        <div class="tab-content" id="myTabContent">
-            <!-- Credits tab -->
-            <div class="tab-pane fade show active" id="credits" role="tabpanel" aria-labelledby="credits-tab">
-                <h2>Credits</h2>
-            </div>
+            <!-- Profile sections themselves -->
+            <div class="tab-content" id="myTabContent">
+                <!-- Credits tab -->
+                <div class="tab-pane fade m-5 show active" id="credits" role="tabpanel" aria-labelledby="credits-tab">
+                    <h2>Credits</h2>
+                </div>
 
-            <!-- Billing tab -->
-            <div class="tab-pane fade" id="billing" role="tabpanel" aria-labelledby="billing-tab">
-                <h2>Billing</h2>
-            </div>
+                <!-- Billing tab -->
+                <div class="tab-pane fade m-5" id="billing" role="tabpanel" aria-labelledby="billing-tab">
+                    <h2>Billing</h2>
+                </div>
 
-            <!-- Profile tab -->
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <h2>Profile</h2>
+                <!-- Profile tab -->
+                <div class="tab-pane fade m-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h2>Edit Profile</h2>
+                    <div th:if="${profileError != null}" class="w-100 alert alert-danger" th:text="${profileError}"></div>
+                    <div th:if="${emailSuccess}" class="w-100 alert alert-success">A link was sent to the new email address.</div>
+                    <div th:if="${passwordSuccess}" class="w-100 alert alert-success">Your password was changed successfully.</div>
+
+                    <!-- Change username -->
+                    <form action="/hub/username" method="post" class="mt-5">
+                        <div class="d-flex align-items-start">
+                            <div class="form-label-group w-25">
+                                <input type="text" name="username" id="inputUsername" class="form-control form-control-sm"
+                                       th:value="${session.user.getUsername()}"
+                                       placeholder="Enter Username" minlength="6" maxlength="24" required>
+                                <label for="inputUsername">Username</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm ml-5">Change Username</button>
+                        </div>
+                    </form>
+
+                    <!-- Change email -->
+                    <form action="/hub/email" method="post" class="mt-5">
+                        <div class="d-flex align-items-start">
+                            <div class="form-label-group w-25">
+                                <input type="email" name="email" id="inputEmail" class="form-control form-control-sm"
+                                       th:value="${session.user.getEmail()}"
+                                       placeholder="Enter Email Address" minlength="6" maxlength="24" required>
+                                <label for="inputEmail">Email Address</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm ml-5">Change Email</button>
+                        </div>
+                    </form>
+
+                    <!-- Change password -->
+                    <form action="/hub/password" method="post" class="mt-5">
+                        <div class="d-flex align-items-start">
+                            <div class="form-label-group">
+                                <input type="password" name="password" id="inputPassword" class="form-control form-control-sm"
+                                       placeholder="Enter New Password" minlength="6" maxlength="32" required>
+                                <label for="inputPassword">New Password</label>
+                            </div>
+                            <div class="form-label-group ml-3">
+                                <input type="password" name="confirmPassword" id="inputConfirmPassword" class="form-control form-control-sm"
+                                       placeholder="Confirm Password" minlength="6" maxlength="32" required>
+                                <label for="inputConfirmPassword">Confirm</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm ml-5">Change Password</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
 </div>
+
+<!-- Select the target tab -->
+<script th:if="${targetTab != null}" id="tab-selector" th:data-tab="${targetTab}">
+    let targetTabName = $("#tab-selector").attr("data-tab");
+
+    $(document).ready(function(){
+        $("#" + targetTabName + "-tab").trigger("click");
+    });
+</script>
 
 </body>
 </html>

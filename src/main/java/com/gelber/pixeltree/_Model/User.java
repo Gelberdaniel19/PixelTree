@@ -1,5 +1,7 @@
 package com.gelber.pixeltree._Model;
 
+import org.thymeleaf.util.StringUtils;
+
 import javax.management.relation.RoleList;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -39,8 +41,12 @@ public class User {
     @Column(nullable = false)
     private boolean verified = false;
 
+    @Column
+    private String verificationToken;
+
     public User() {
         this.roleList = new ArrayList<UserRole>();
+        verificationToken = StringUtils.randomAlphanumeric(32);
     }
 
     // Getters and setters
@@ -110,5 +116,13 @@ public class User {
 
     public void setVerified(boolean verified) {
         this.verified = verified;
+    }
+
+    public String getVerificationToken() {
+        return verificationToken;
+    }
+
+    public void setVerificationToken(String verificationToken) {
+        this.verificationToken = verificationToken;
     }
 }
