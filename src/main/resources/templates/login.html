@@ -18,6 +18,11 @@
                         <div class="col-md-9 col-lg-8 mx-auto">
                             <h3 class="login-heading mb-4">Welcome back!</h3>
                             <form action="/login" method="post">
+                                <!-- error notification -->
+                                <div class="alert alert-danger w-100" th:if="${param.error}">
+                                    Invalid email or password
+                                </div>
+
                                 <div class="form-label-group">
                                     <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Enter Username" required autofocus>
                                     <label for="inputUsername">Username</label>
