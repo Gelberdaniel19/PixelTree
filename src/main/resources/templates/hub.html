@@ -4,7 +4,15 @@
 <head th:include="_fragments.html :: head('Hub | Pixel Tree', 'hub')"></head>
 <body>
 
-<h1>hub</h1>
+<div class="wrapper">
+    <div th:include="_fragments :: sidebar"></div>
+    <script> $("#linkDashboard").attr("class", "active"); </script>
+
+    <div id="content">
+        <h1>Test</h1>
+    </div>
+
+</div>
 
 </body>
 </html>

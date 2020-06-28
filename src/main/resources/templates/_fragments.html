@@ -1,7 +1,7 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
     <!-- Header fragment -->
     <head th:fragment="head(title, name)">
-        <title th:text="${title}" />
+        <title th:text="${title}"></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Procedurally generated pixel art objects">
@@ -52,7 +52,7 @@
                         <a class="btn btn-outline-success" href="/hub">
                             <div class="d-flex flex-row align-items-center">
                                 <i class="fas fa-user"></i>
-                                <div class="ml-3" th:text="${session.user.username}" />
+                                <div class="ml-3" th:text="${session.user.username}"></div>
                             </div>
                         </a>
                     </div>
@@ -60,6 +60,31 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div th:fragment="sidebar">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h1 class="hub-title">Pixel Tree Hub</h1>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li id="linkDashboard">
+                    <a href="/hub">Dashboard</a>
+                </li>
+                <li id="linkProfile">
+                    <a href="/hub/profile">Your Profile</a>
+                </li>
+                <li id="linkCredits">
+                    <a href="/hub/credits">Credits</a>
+                </li>
+                <p>Generators</p>
+                <li id="linkGeneratorRock">
+                    <a href="/hub/generators/rock"><img width="64" height="64" src="/img/rock.png"  alt="rock"/></a>
+                </li>
+            </ul>
+        </nav>
     </div>
 
 </html>
