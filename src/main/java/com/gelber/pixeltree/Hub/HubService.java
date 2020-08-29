@@ -1,9 +1,11 @@
 package com.gelber.pixeltree.Hub;
 
+import com.gelber.pixeltree._Model.CreditCard;
 import com.gelber.pixeltree._Model.EmailChangeToken;
 import com.gelber.pixeltree._Model.User;
 import com.gelber.pixeltree._Repository.EmailChangeTokenRepository;
 import com.gelber.pixeltree._Repository.UserRepository;
+import com.stripe.model.ChargeOutcome;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -88,5 +90,20 @@ public class HubService {
         user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
         return null;
+    }
+
+    public void buyCredits(int amount, CreditCard card, User user) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("gelber.programming@gmail.com");
+        message.setTo(user.getEmail());
+        message.setSubject("Your PixelTree receipt");
+        message.setText("Here is your receipt for buying credits from PixelTree:\n"
+            + " - " + amount + " credits:\t$" + (amount / 100) + ".00\n"
+            + " --------------------\n"
+            + " - Total:\t$" + (amount / 100) + ".00\n\n"
+            + "The total was charged to your card ending in " + card.getNum().substring(card.getNum().length() - 4));
+        javaMailSender.send(message);
+        user.setCredits(user.getCredits() + amount);
+        userRepository.save(user);
     }
 }

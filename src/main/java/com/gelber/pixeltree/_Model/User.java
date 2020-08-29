@@ -44,6 +44,9 @@ public class User {
     @Column
     private String verificationToken;
 
+    @Column(nullable = false)
+    private int credits = 0;
+
     public User() {
         this.roleList = new ArrayList<UserRole>();
         verificationToken = StringUtils.randomAlphanumeric(32);
@@ -124,5 +127,13 @@ public class User {
 
     public void setVerificationToken(String verificationToken) {
         this.verificationToken = verificationToken;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 }

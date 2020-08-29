@@ -32,6 +32,58 @@
                 <!-- Credits tab -->
                 <div class="tab-pane fade m-5 show active" id="credits" role="tabpanel" aria-labelledby="credits-tab">
                     <h2>Credits</h2>
+                    <div class="mt-5 d-flex align-items-center">
+                        <h4>Balance:</h4>
+                        <h4 class="mx-2" th:text="${session.user.getCredits()}"></h4>
+                        cr
+                    </div>
+
+                    <hr style="margin-top: -4px" />
+                    <button class="btn btn-lg btn-outline-success mt-2" data-toggle="modal" data-target="#add100">Add 100 cr</button>
+
+                    <!-- Buy 100 credits modal -->
+                    <div class="modal fade" id="add100" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Add 100 credits</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><span style="display: inline-block; width: 100px">Credits:</span>100</p>
+                                    <p style="margin-top: -5px"><span style="display: inline-block; width: 100px">Total:</span>USD $1.00</p>
+                                    <hr style="border-top: 1px solid #333333" />
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <!-- Credit card form -->
+                                        <form method="post" action="/hub/buy/100">
+                                            <div class="form-label-group w-50">
+                                                <label for="cardNum">Card Number</label>
+                                                <input style="margin-top: -10px;" class="form-control mb-2" id="cardNum"
+                                                       type="number" minlength="13" maxlength="16" placeholder="Card Number" name="num" required>
+                                                <label for="cardExp">Card Expiry</label>
+                                                <div style="margin-top: -10px;" class="input-group  mb-2" id="cardExp">
+                                                    <input class="form-control"
+                                                           type="number" min="1" max="12" placeholder="MM" name="expm" required>
+                                                    <input class="form-control"
+                                                           type="number" min="20" max="99" placeholder="YY" name="expy" required>
+                                                </div>
+                                                <label for="cardCvv">CVV</label>
+                                                <input style="margin-top: -10px;" class="form-control mb-2" id="cardCvv"
+                                                       type="number" minlength="3" maxlength="4" placeholder="CVV" name="cvv" required>
+                                                <div class="btn-group mr-auto mt-2">
+                                                    <button type="submit" class="btn btn-primary">Checkout</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Billing tab -->

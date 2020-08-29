@@ -1,6 +1,7 @@
 let password = null;
 let confirm = null;
 
+// Make it so passwords must match
 $(document).ready(function() {
     password = $("#inputPassword");
     confirm = $("#inputConfirmPassword");
@@ -19,3 +20,12 @@ function validatePasswordMatch() {
         confirm[0].setCustomValidity("");
     }
 }
+
+// Update the credit USD amount when the credit amount changes
+$(document).ready(function() {
+    $("#creditAmountInput")[0].oninput = function() {
+        let dollars = $("#creditAmountInput").val() / 100;
+        dollars = parseInt(dollars, 10);
+        $("#creditAmountUSD").text("USD $" + dollars + ".00");
+    }
+});

@@ -1,5 +1,6 @@
 package com.gelber.pixeltree.Hub;
 
+import com.gelber.pixeltree._Model.CreditCard;
 import com.gelber.pixeltree._Model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,5 +59,13 @@ public class HubController {
         if (res == null) model.addAttribute("passwordSuccess", true);
         model.addAttribute("targetTab", "profile");
         return "hub";
+    }
+
+    @PostMapping("/buy/{amount}")
+    public String buyCredits(HttpSession session,
+                                         @PathVariable int amount, CreditCard card) {
+        User user = (User)session.getAttribute("user");
+        hubService.buyCredits(amount, card, user);
+        return "redirect:/hub";
     }
 }
